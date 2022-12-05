@@ -16,7 +16,7 @@ public class Automata{
             System.out.println("1. AFD numero real");
             System.out.println("2. AFD detecta par de ceros y sin 1's sucesivos");
             System.out.println("3. AFD dos o mas simbolos consecutivos iguales para {a, b, c, d}");
-            System.out.println("4. Automata libre");
+            System.out.println("4. Laberinto");
             System.out.println("5. Salir");
             opc=ent.nextInt();
             switch(opc){
@@ -33,6 +33,8 @@ public class Automata{
                     System.out.println(ValidarAutoTres(cadena));
                 break;
                 case 4:
+                    System.out.println("Mueve al burrito con a,s,d,w.");
+                    System.out.println("Si pones otro caracter el burrito muere y se queda en ese estado");
                     File file = new File("laberinto.jpeg");
                     BufferedImage bufferedImage = ImageIO.read(file);
             
@@ -54,6 +56,7 @@ public class Automata{
 
                 break;
                 case 5:
+                    System.out.println("Gracias por usar el programa. Adios");
                 break;
                 default:
                 System.out.println("opcion invalida");
