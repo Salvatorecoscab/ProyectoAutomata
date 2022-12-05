@@ -1,22 +1,19 @@
 import java.util.Scanner;
-import javax.imageio.ImageIO;
-import javax.swing.*;
-import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 
 public class Automata {
     static Scanner entOpc = new Scanner(System.in);
     static Scanner ent = new Scanner(System.in);
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws java.io.IOException {
         int opc = 6;
         String cadena = "";
 
         do {
+            System.out.print("\033[H\033[2J");
+            System.out.flush();
             System.out.println("Selecciona una opcion:");
-            System.out.println("1. AFD numero real");
+            System.out.println("1. AFD numero con notacion cientifica");
             System.out.println("2. AFD detecta par de ceros y sin 1's sucesivos");
             System.out.println("3. AFD dos o mas simbolos consecutivos iguales para {a, b, c, d}");
             System.out.println("4. Laberinto");
@@ -25,41 +22,52 @@ public class Automata {
 
             switch (opc) {
                 case 1:
+                    System.out.println("Escribe un numero con la notacion cientifica: ");
                     cadena = ent.nextLine();
-                    System.out.println("leida=" + cadena);
                     System.out.println(Validacion(ValidarAutoUno(cadena)));
 
                     break;
                 case 2:
+                    System.out.println("Escribe un numero con solo un par de ceros y sin unos sucesivos: ");
                     cadena = ent.nextLine();
                     System.out.println(Validacion(ValidarAutoDos(cadena)));
                     break;
                 case 3:
+                    System.out.println(
+                            "Escribe una cadena que solo contenga a, b, c o d y es acpetada si tiene dos letras sucesivas ");
                     cadena = ent.nextLine();
                     System.out.println(Validacion(ValidarAutoTres(cadena)));
                     break;
                 case 4:
-                    System.out.println("Mueve al burrito con a,s,d,w.");
+                    System.out.println("ESCAPA DEL LABERINTO");
+                    System.out.println("Muevete con a(izquierda), s(abajo), d(derecha), w(arriba).");
+                    System.out.println("Si metes un caracter invalido o no logras salir mueres");
+                    System.out.println("🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦");
+                    System.out.println("🟨🟨🟨🟨🟦🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟦");
+                    System.out.println("🟨🟨🟩🟨🟦🟨🟩🟨🟨🟨🟩🟨🟨🟨🟩🟨🟨🟨🟩🟨🟦");
+                    System.out.println("🟨🟨🟨🟨🟦🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟦");
+                    System.out.println("🟦🟨🟨🟨🟦🟨🟨🟨🟦🟦🟦🟦🟦🟨🟨🟨🟦🟨🟨🟨🟦");
+                    System.out.println("🟦🟨🟨🟨🟨🟨🟨🟨🟦🟨🟨🟨🟨🟨🟨🟨🟦🟨🟨🟨🟦");
+                    System.out.println("🟦🟨🟩🟨🟨🟨🟩🟨🟦🟨🟩🟨🟨🟨🟩🟨🟦🟨🟩🟨🟦");
+                    System.out.println("🟦🟨🟨🟨🟨🟨🟨🟨🟦🟨🟨🟨🟨🟨🟨🟨🟦🟨🟨🟨🟦");
+                    System.out.println("🟦🟦🟦🟦🟦🟦🟦🟦🟦🟨🟨🟨🟦🟦🟦🟦🟦🟦🟦🟦🟦");
+                    System.out.println("🟦🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟦🟨🟨🟨🟨🟨🟨🟨🟨");
+                    System.out.println("🟦🟨🟩🟨🟨🟨🟩🟨🟨🟨🟩🟨🟦🟨🟩🟨🟨🟨🟨🟥🟨");
+                    System.out.println("🟦🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟦🟨🟨🟨🟨🟨🟨🟨🟨");
+                    System.out.println("🟦🟨🟨🟨🟦🟦🟦🟦🟦🟦🟦🟦🟦🟨🟨🟨🟦🟦🟦🟦🟦");
+                    System.out.println("🟦🟨🟨🟨🟦🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟦🟨🟨🟨🟦");
+                    System.out.println("🟦🟨🟩🟨🟦🟨🟩🟨🟨🟨🟩🟨🟨🟨🟩🟨🟦🟨🟩🟨🟦");
+                    System.out.println("🟦🟨🟨🟨🟦🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟦🟨🟨🟨🟦");
+                    System.out.println("🟦🟨🟨🟨🟦🟨🟨🟨🟦🟦🟦🟦🟦🟦🟦🟦🟦🟨🟨🟨🟦");
+                    System.out.println("🟦🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟦");
+                    System.out.println("🟦🟨🟩🟨🟨🟨🟩🟨🟨🟨🟩🟨🟨🟨🟩🟨🟨🟨🟩🟨🟦");
+                    System.out.println("🟦🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟦");
+                    System.out.println("🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦");
+
                     System.out.println("Si pones otro caracter el burrito muere y se queda en ese estado");
-                    File file = new File("laberinto.jpeg");
-                    BufferedImage bufferedImage = ImageIO.read(file);
-
-                    ImageIcon imageIcon = new ImageIcon(bufferedImage);
-                    JFrame jFrame = new JFrame();
-
-                    jFrame.setLayout(new FlowLayout());
-
-                    jFrame.setSize(1000, 621);
-                    JLabel jLabel = new JLabel();
-
-                    jLabel.setIcon(imageIcon);
-                    jFrame.add(jLabel);
-                    jFrame.setVisible(true);
-
-                    jFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                     cadena = ent.nextLine();
-                    System.out.println(Validacion(ValidarAutoCuatro(cadena)));
-
+                    System.out.println(ValidacionLaberinto(ValidarAutoCuatro(cadena)));
+                     
                     break;
                 case 5:
                     System.out.println("Gracias por usar el programa.");
@@ -67,6 +75,8 @@ public class Automata {
                 default:
                     System.out.println("opcion invalida");
             }
+            System.out.println ( "Presione cualquier tecla para salir.");
+            System.in.read();
 
         } while (opc != 5);
     }
@@ -76,6 +86,13 @@ public class Automata {
             return "<✅----------cadena aceptada---------->✅";
         else
             return "❌<----------cadena NO aceptada---------->❌";
+
+    }
+    public static String ValidacionLaberinto(boolean estado) {
+        if (estado)
+            return "<✅----------Lograste salir---------->✅";
+        else
+            return "❌<----------Estas muerto---------->❌";
 
     }
 
