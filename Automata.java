@@ -10,7 +10,7 @@ public class Automata{
     static Scanner ent = new Scanner(System.in);
     public static void main(String[] args)throws IOException{
         int opc;
-        String cadena;
+        String cadena="";
         do{
             System.out.println("Selecciona una opcion:");
             System.out.println("1. AFD numero real");
@@ -22,15 +22,15 @@ public class Automata{
             switch(opc){
                 case 1:
                     cadena=ent.next();
-                    System.out.println(ValidarAutoUno(cadena));
+                    System.out.println(Validacion(ValidarAutoUno(cadena)));
                 break;
                 case 2:
                     cadena=ent.next();
-                    System.out.println(ValidarAutoDos(cadena));
+                    System.out.println(Validacion(ValidarAutoDos(cadena)));
                 break;
                 case 3:
                     cadena=ent.next();
-                    System.out.println(ValidarAutoTres(cadena));
+                    System.out.println(Validacion(ValidarAutoTres(cadena)));
                 break;
                 case 4:
                     System.out.println("Mueve al burrito con a,s,d,w.");
@@ -52,18 +52,25 @@ public class Automata{
                     
                     jFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                     cadena=ent.next();
-                    System.out.println(ValidarAutoCuatro(cadena));
+                    System.out.println(Validacion(ValidarAutoCuatro(cadena)));
 
                 break;
                 case 5:
-                    System.out.println("Gracias por usar el programa. Adios");
+                    System.out.println("Gracias por usar el programa.");
                 break;
                 default:
                 System.out.println("opcion invalida");
             }
         }while(opc!=5);
     }
-    public static String ValidarAutoUno(String cadena){
+    public static String Validacion(boolean estado){
+        if(estado)
+            return "<✅----------cadena aceptada---------->✅";
+        else 
+            return "❌<----------cadena NO aceptada---------->❌";
+
+    }
+    public static boolean ValidarAutoUno(String cadena){
         char estado;
         char []caracteres=cadena.toCharArray();
         estado='A';
@@ -83,15 +90,39 @@ public class Automata{
                             case '6':
                             case '7':
                             case '8':
-                            case '9':
-                            case '+':
-                            case '-':     
+                            case '9':    
                                 estado='B';
+                            break;
+
+                            case '+':
+                            case '-': 
+                                estado='S';
+                            break;
+                            case '.':
+                                estado='C';
                             break;
                             default:
                                 estado='N';
                         }
                    break;
+                   case 'S':
+                   switch(caracter){
+                       case '0':
+                       case '1':
+                       case '2':
+                       case '3':
+                       case '4':
+                       case '5':
+                       case '6':
+                       case '7':
+                       case '8':
+                       case '9':    
+                           estado='B';
+                       break;
+                       default:
+                           estado='N';
+                   }
+              break;
                  case 'B':
                         switch(caracter){
                             case '0':
@@ -220,14 +251,14 @@ public class Automata{
             
         }  
         if(estado=='D'||estado=='G'||estado=='B')
-            return "<----------cadena aceptada---------->";
+            return true;
         else 
-            return "<----------cadena NO aceptada---------->";
+            return false;
                
     }
     
     
-    public static String ValidarAutoDos(String entrada){
+    public static boolean ValidarAutoDos(String entrada){
         char estado;
         char[ ] letras= entrada.toCharArray();
         estado='A';
@@ -308,9 +339,9 @@ public class Automata{
              }
             
             if (estado=='A'||estado=='D'){
-                return "<----------cadena aceptada---------->";
+                return true;
             }else{
-                return "<----------cadena NO aceptada---------->";
+                return false;
             }
           
        
@@ -323,7 +354,7 @@ public class Automata{
  */
     
     
-    public static String ValidarAutoTres(String entrada){
+    public static boolean ValidarAutoTres(String entrada){
         char[ ] letras= entrada.toCharArray();
         char estado;
         estado='A';
@@ -456,13 +487,13 @@ public class Automata{
              
          }
          if (estado=='F'){
-            return "<----------cadena aceptada---------->";
+            return true;
         }else{
-            return "<----------cadena NO aceptada---------->";
+            return false;
         }
  
     }
-    public static String ValidarAutoCuatro(String entrada){
+    public static boolean ValidarAutoCuatro(String entrada){
         char[ ] letras= entrada.toCharArray();
         String estado;
         estado="e24";        
@@ -1001,9 +1032,9 @@ public class Automata{
              
          }
          if (estado.equals("e00")){
-            return "<----------Lograste sacar al burrito---------->";
+            return true;
         }else{
-            return "<----------No lo lograste---------->";
+            return false;
         }
  
     }   
