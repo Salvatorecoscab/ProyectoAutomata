@@ -1,8 +1,14 @@
 import java.util.Scanner;
+import javax.imageio.ImageIO;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
 public class Automata{
     static Scanner ent = new Scanner(System.in);
-    public static void main(String[] args){
+    public static void main(String[] args)throws IOException{
         int opc;
         String cadena;
         do{
@@ -27,6 +33,25 @@ public class Automata{
                     System.out.println(ValidarAutoTres(cadena));
                 break;
                 case 4:
+                    File file = new File("laberinto.jpeg");
+                    BufferedImage bufferedImage = ImageIO.read(file);
+            
+                    ImageIcon imageIcon = new ImageIcon(bufferedImage);
+                    JFrame jFrame = new JFrame();
+            
+                    jFrame.setLayout(new FlowLayout());
+                    
+                    jFrame.setSize(1000, 621);
+                    JLabel jLabel = new JLabel();
+            
+                    jLabel.setIcon(imageIcon);
+                    jFrame.add(jLabel);
+                    jFrame.setVisible(true);
+                    
+                    jFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                    cadena=ent.next();
+                    System.out.println(ValidarAutoCuatro(cadena));
+
                 break;
                 case 5:
                 break;
@@ -434,7 +459,551 @@ public class Automata{
         }
  
     }
+    public static String ValidarAutoCuatro(String entrada){
+        char[ ] letras= entrada.toCharArray();
+        String estado;
+        estado="e24";        
+         for(char letra: letras){
+            System.out.println("valor leido: "+letra+"->"+"estado: "+estado);
+             switch(estado){
+                 
+                 case "e24":
+                     switch (letra){
+                         case 'a':
+                             estado="e23";
+                         break;
+                         
+                         case 's':
+                             estado="e24";
+                             break;
+
+                         case 'd':
+                             estado="e24";
+                             break;
+                         case 'w':
+                             estado="e24";
+                             break;
     
+                         default:
+                             estado="X";
+                     }
+                     break;
+                     case "e23":
+                     switch (letra){
+                         case 'a':
+                             estado="e23";
+                         break;
+                         
+                         case 's':
+                             estado="e33";
+                             break;
+
+                         case 'd':
+                             estado="e24";
+                             break;
+                         case 'w':
+                             estado="e23";
+                             break;
+    
+                         default:
+                             estado="X";
+                     }
+                     break;
+                     case "e33":
+                     switch (letra){
+                         case 'a':
+                             estado="e32";
+                         break;
+                         
+                         case 's':
+                             estado="e33";
+                             break;
+
+                         case 'd':
+                             estado="e33";
+                             break;
+                         case 'w':
+                             estado="e23";
+                             break;
+    
+                         default:
+                             estado="X";
+                     }
+                     break;
+                     case "e32":
+                     switch (letra){
+                         case 'a':
+                             estado="e31";
+                         break;
+                         
+                         case 's':
+                             estado="e32";
+                             break;
+
+                         case 'd':
+                             estado="e33";
+                             break;
+                         case 'w':
+                             estado="e32";
+                             break;
+    
+                         default:
+                             estado="X";
+                     }
+                     break;
+                     case "e31":
+                     switch (letra){
+                         case 'a':
+                             estado="e31";
+                         break;
+                         
+                         case 's':
+                             estado="e41";
+                             break;
+
+                         case 'd':
+                             estado="e32";
+                             break;
+                         case 'w':
+                             estado="e31";
+                             break;
+    
+                         default:
+                             estado="X";
+                     }
+                     break;
+                     case "e41":
+                     switch (letra){
+                         case 'a':
+                             estado="e40";
+                         break;
+                         
+                         case 's':
+                             estado="e41";
+                             break;
+
+                         case 'd':
+                             estado="e42";
+                             break;
+                         case 'w':
+                             estado="e31";
+                             break;
+    
+                         default:
+                             estado="X";
+                     }
+                     break;
+                     case "e42":
+                     switch (letra){
+                         case 'a':
+                             estado="e41";
+                         break;
+                         
+                         case 's':
+                             estado="e42";
+                             break;
+
+                         case 'd':
+                             estado="e43";
+                             break;
+                         case 'w':
+                             estado="e42";
+                             break;
+    
+                         default:
+                             estado="X";
+                     }
+                     break;
+                     case "e43":
+                     switch (letra){
+                         case 'a':
+                             estado="e42";
+                         break;
+                         
+                         case 's':
+                             estado="e43";
+                             break;
+
+                         case 'd':
+                             estado="e44";
+                             break;
+                         case 'w':
+                             estado="e43";
+                             break;
+    
+                         default:
+                             estado="X";
+                     }
+                     break;
+                     case "e44":
+                     switch (letra){
+                         case 'a':
+                             estado="e43";
+                         break;
+                         
+                         case 's':
+                             estado="e44";
+                             break;
+
+                         case 'd':
+                             estado="e44";
+                             break;
+                         case 'w':
+                             estado="e34";
+                             break;
+    
+                         default:
+                             estado="X";
+                     }
+                     break;
+                     case "e34":
+                     switch (letra){
+                         case 'a':
+                             estado="e34";
+                         break;
+                         
+                         case 's':
+                             estado="e44";
+                             break;
+
+                         case 'd':
+                             estado="e34";
+                             break;
+                         case 'w':
+                             estado="e34";
+                             break;
+    
+                         default:
+                             estado="X";
+                     }
+                     break;
+                     case "e40":
+                     switch (letra){
+                         case 'a':
+                             estado="e40";
+                         break;
+                         
+                         case 's':
+                             estado="e40";
+                             break;
+
+                         case 'd':
+                             estado="e41";
+                             break;
+                         case 'w':
+                             estado="e30";
+                             break;
+    
+                         default:
+                             estado="X";
+                     }
+                     break;
+                     case "e30":
+                     switch (letra){
+                         case 'a':
+                             estado="e30";
+                         break;
+                         
+                         case 's':
+                             estado="e40";
+                             break;
+
+                         case 'd':
+                             estado="e30";
+                             break;
+                         case 'w':
+                             estado="e20";
+                             break;
+    
+                         default:
+                             estado="X";
+                     }
+                     break;
+                     case "e20":
+                     switch (letra){
+                         case 'a':
+                             estado="e20";
+                         break;
+                         
+                         case 's':
+                             estado="e30";
+                             break;
+
+                         case 'd':
+                             estado="e21";
+                             break;
+                         case 'w':
+                             estado="e20";
+                             break;
+    
+                         default:
+                             estado="X";
+                     }
+                     break;
+                     case "e21":
+                     switch (letra){
+                         case 'a':
+                             estado="e20";
+                         break;
+                         
+                         case 's':
+                             estado="e21";
+                             break;
+
+                         case 'd':
+                             estado="e22";
+                             break;
+                         case 'w':
+                             estado="e21";
+                             break;
+    
+                         default:
+                             estado="X";
+                     }
+                     break;
+                     case "e22":
+                     switch (letra){
+                         case 'a':
+                             estado="e21";
+                         break;
+                         
+                         case 's':
+                             estado="e22";
+                             break;
+
+                         case 'd':
+                             estado="e22";
+                             break;
+                         case 'w':
+                             estado="e12";
+                             break;
+    
+                         default:
+                             estado="X";
+                     }
+                     break;
+                     case "e12":
+                     switch (letra){
+                         case 'a':
+                             estado="e12";
+                         break;
+                         
+                         case 's':
+                             estado="e22";
+                             break;
+
+                         case 'd':
+                             estado="e13";
+                             break;
+                         case 'w':
+                             estado="e12";
+                             break;
+    
+                         default:
+                             estado="X";
+                     }
+                     break;
+                     case "e13":
+                     switch (letra){
+                         case 'a':
+                             estado="e12";
+                         break;
+                         
+                         case 's':
+                             estado="e13";
+                             break;
+
+                         case 'd':
+                             estado="e13";
+                             break;
+                         case 'w':
+                             estado="e03";
+                             break;
+    
+                         default:
+                             estado="X";
+                     }
+                     break;
+                     case "e03":
+                     switch (letra){
+                         case 'a':
+                             estado="e02";
+                         break;
+                         
+                         case 's':
+                             estado="e13";
+                             break;
+
+                         case 'd':
+                             estado="e04";
+                             break;
+                         case 'w':
+                             estado="e03";
+                             break;
+    
+                         default:
+                             estado="X";
+                     }
+                     break;
+                     case "e04":
+                     switch (letra){
+                         case 'a':
+                             estado="e03";
+                         break;
+                         
+                         case 's':
+                             estado="e14";
+                             break;
+
+                         case 'd':
+                             estado="e04";
+                             break;
+                         case 'w':
+                             estado="e04";
+                             break;
+    
+                         default:
+                             estado="X";
+                     }
+                     break;
+                     case "e14":
+                     switch (letra){
+                         case 'a':
+                             estado="e14";
+                         break;
+                         
+                         case 's':
+                             estado="e14";
+                             break;
+
+                         case 'd':
+                             estado="e14";
+                             break;
+                         case 'w':
+                             estado="e04";
+                             break;
+    
+                         default:
+                             estado="X";
+                     }
+                     break;
+                     case "e02":
+                     switch (letra){
+                         case 'a':
+                             estado="e01";
+                         break;
+                         
+                         case 's':
+                             estado="e02";
+                             break;
+
+                         case 'd':
+                             estado="e03";
+                             break;
+                         case 'w':
+                             estado="e02";
+                             break;
+    
+                         default:
+                             estado="X";
+                     }
+                     break;
+                     case "e01":
+                     switch (letra){
+                         case 'a':
+                             estado="e01";
+                         break;
+                         
+                         case 's':
+                             estado="e11";
+                             break;
+
+                         case 'd':
+                             estado="e02";
+                             break;
+                         case 'w':
+                             estado="e01";
+                             break;
+    
+                         default:
+                             estado="X";
+                     }
+                     break;
+                     case "e11":
+                     switch (letra){
+                         case 'a':
+                             estado="e10";
+                         break;
+                         
+                         case 's':
+                             estado="e11";
+                             break;
+
+                         case 'd':
+                             estado="e11";
+                             break;
+                         case 'w':
+                             estado="e01";
+                             break;
+    
+                         default:
+                             estado="X";
+                     }
+                     break;
+                     case "e10":
+                     switch (letra){
+                         case 'a':
+                             estado="e10";
+                         break;
+                         
+                         case 's':
+                             estado="e10";
+                             break;
+
+                         case 'd':
+                             estado="e11";
+                             break;
+                         case 'w':
+                             estado="e00";
+                             break;
+    
+                         default:
+                             estado="X";
+                     }
+                     break;
+                     case "e00":
+                     switch (letra){
+                         case 'a':
+                             estado="e00";
+                         break;
+                         
+                         case 's':
+                             estado="e10";
+                             break;
+
+                         case 'd':
+                             estado="e00";
+                             break;
+                         case 'w':
+                             estado="e00";
+                             break;
+    
+                         default:
+                             estado="X";
+                     }
+                     break;
+                 
+             }
+             
+             
+         }
+         if (estado.equals("e00")){
+            return "<----------Lograste sacar al burrito---------->";
+        }else{
+            return "<----------No lo lograste---------->";
+        }
+ 
+    }   
 
 
 
