@@ -65,7 +65,7 @@ public class Automata {
                     System.out.println("🟦🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟦");
                     System.out.println("🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦");
 
-                    System.out.println("Si pones otro caracter el burrito muere y se queda en ese estado");
+                    System.out.println("Ingresa los movimientos: ");
                     cadena = ent.nextLine();
                     System.out.println(ValidacionLaberinto(ValidarAutoCuatro(cadena)));
                      
