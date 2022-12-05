@@ -42,9 +42,10 @@ public class Automata {
                     System.out.println("ESCAPA DEL LABERINTO");
                     System.out.println("Muevete con a(izquierda), s(abajo), d(derecha), w(arriba).");
                     System.out.println("Si metes un caracter invalido o no logras salir mueres");
+                    System.out.println("Empiezas en 🟥 y terminas en 🟪");
                     System.out.println("🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦");
                     System.out.println("🟨🟨🟨🟨🟦🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟦");
-                    System.out.println("🟨🟨🟩🟨🟦🟨🟩🟨🟨🟨🟩🟨🟨🟨🟩🟨🟨🟨🟩🟨🟦");
+                    System.out.println("🟨🟨🟪🟨🟦🟨🟩🟨🟨🟨🟩🟨🟨🟨🟩🟨🟨🟨🟩🟨🟦");
                     System.out.println("🟨🟨🟨🟨🟦🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟦");
                     System.out.println("🟦🟨🟨🟨🟦🟨🟨🟨🟦🟦🟦🟦🟦🟨🟨🟨🟦🟨🟨🟨🟦");
                     System.out.println("🟦🟨🟨🟨🟨🟨🟨🟨🟦🟨🟨🟨🟨🟨🟨🟨🟦🟨🟨🟨🟦");
