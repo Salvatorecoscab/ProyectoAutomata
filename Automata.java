@@ -7,11 +7,13 @@ import java.io.File;
 import java.io.IOException;
 
 public class Automata {
+    static Scanner entOpc = new Scanner(System.in);
     static Scanner ent = new Scanner(System.in);
 
     public static void main(String[] args) throws IOException {
-        int opc;
+        int opc = 6;
         String cadena = "";
+
         do {
             System.out.println("Selecciona una opcion:");
             System.out.println("1. AFD numero real");
@@ -19,18 +21,21 @@ public class Automata {
             System.out.println("3. AFD dos o mas simbolos consecutivos iguales para {a, b, c, d}");
             System.out.println("4. Laberinto");
             System.out.println("5. Salir");
-            opc = ent.nextInt();
+            opc = entOpc.nextInt();
+
             switch (opc) {
                 case 1:
-                    cadena = ent.next();
+                    cadena = ent.nextLine();
+                    System.out.println("leida=" + cadena);
                     System.out.println(Validacion(ValidarAutoUno(cadena)));
+
                     break;
                 case 2:
-                    cadena = ent.next();
+                    cadena = ent.nextLine();
                     System.out.println(Validacion(ValidarAutoDos(cadena)));
                     break;
                 case 3:
-                    cadena = ent.next();
+                    cadena = ent.nextLine();
                     System.out.println(Validacion(ValidarAutoTres(cadena)));
                     break;
                 case 4:
@@ -52,7 +57,7 @@ public class Automata {
                     jFrame.setVisible(true);
 
                     jFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                    cadena = ent.next();
+                    cadena = ent.nextLine();
                     System.out.println(Validacion(ValidarAutoCuatro(cadena)));
 
                     break;
@@ -62,6 +67,7 @@ public class Automata {
                 default:
                     System.out.println("opcion invalida");
             }
+
         } while (opc != 5);
     }
 
@@ -77,8 +83,9 @@ public class Automata {
         char estado;
         char[] caracteres = cadena.toCharArray();
         estado = 'A';
+        // Si se coloca con foreach el espacio indica fin de cadena
         for (char caracter : caracteres) {
-            System.out.println("valor leido: " + caracter + "->" + "estado: " + estado);
+            System.out.print("(estado: " + estado + ") ╳ (" + "caracter: " + caracter + ")");
             switch (estado) {
 
                 case 'A':
@@ -95,7 +102,6 @@ public class Automata {
                         case '9':
                             estado = 'B';
                             break;
-
                         case '+':
                         case '-':
                             estado = 'S';
@@ -250,7 +256,7 @@ public class Automata {
                     }
                     break;
             }
-
+            System.out.println(" ➡ " + estado);
         }
         if (estado == 'D' || estado == 'G' || estado == 'B')
             return true;
@@ -265,7 +271,8 @@ public class Automata {
         estado = 'A';
 
         for (char letra : letras) {
-            System.out.println("valor leido: " + letra + "->" + "estado: " + estado);
+
+            System.out.print("(estado: " + estado + ") ╳ (" + "caracter: " + letra + ")");
             switch (estado) {
                 case 'A':
 
@@ -336,7 +343,7 @@ public class Automata {
                     break;
 
             }
-
+            System.out.println(" ➡ " + estado);
         }
 
         if (estado == 'A' || estado == 'D') {
@@ -358,7 +365,7 @@ public class Automata {
         estado = 'A';
 
         for (char letra : letras) {
-            System.out.println("valor leido: " + letra + "->" + "estado: " + estado);
+            System.out.print("(estado: " + estado + ") ╳ (" + "caracter: " + letra + ")");
             switch (estado) {
 
                 case 'A':
@@ -481,7 +488,7 @@ public class Automata {
                     break;
 
             }
-
+            System.out.println(" ➡ " + estado);
         }
         if (estado == 'F') {
             return true;
@@ -496,7 +503,7 @@ public class Automata {
         String estado;
         estado = "e24";
         for (char letra : letras) {
-            System.out.println("valor leido: " + letra + "->" + "estado: " + estado);
+            System.out.print("(estado: " + estado + ") ╳ (" + "caracter: " + letra + ")");
             switch (estado) {
 
                 case "e24":
@@ -1026,7 +1033,7 @@ public class Automata {
                     break;
 
             }
-
+            System.out.println(" ➡ " + estado);
         }
         if (estado.equals("e00")) {
             return true;
